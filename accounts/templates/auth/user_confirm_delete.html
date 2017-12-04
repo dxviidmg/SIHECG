@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<style type="text/css">
+	.centered{
+    float: none;
+    margin: 0 auto;
+	}
+</style>
+
+	<div class="row">
+		<div class="col-xs-9 centered">
+			<form method="post">
+				{%csrf_token%}
+				<h4>¿Esta seguro de que desea eliminar el historial del paciente {{object}}?</h4>
+				<input class="btn btn-primary" type="submit" value="Aceptar">
+				<a href="{%url 'accounts:ListViewPacientes'%}" class="btn btn-primary" role="button">Cancelar</a>
+			</form>
+		</div>
+	</div>
+{%endblock content%}

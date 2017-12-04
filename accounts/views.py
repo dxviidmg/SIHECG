@@ -7,6 +7,8 @@ from .models import *
 from .forms import *
 from ecgs.forms import *
 from ecgs.models import *
+from django.views.generic.edit import DeleteView
+from django.core.urlresolvers import reverse_lazy
 
 #Ver perfil al iniciar sesión
 class ViewProfile(View):
@@ -98,4 +100,8 @@ class CreateViewPaciente(View):
 			NuevoProfilePaciente.doctor = doctor
 			NuevoProfilePaciente.save()			
 	
-		return redirect("accounts:ListViewPacientes")		
+		return redirect("accounts:ListViewPacientes")
+
+class DeleteViewPaciente(DeleteView):
+	model = User
+	success_url = reverse_lazy('accounts:ListViewPacientes')

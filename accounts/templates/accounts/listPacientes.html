@@ -20,7 +20,7 @@
 				<td>{{perfil.user.first_name}} {{perfil.user.last_name}}</td>
 				<td>{{perfil.phone}}</td>
 				<td><a href="{%url 'accounts:DetailViewPaciente' perfil.user.username%}">Ver historial</a></td>
-				<td>Borrar</td>
+				<td><a href="{%url 'accounts:DeleteViewPaciente' perfil.user.pk%}">Borrar</a></td>
 			</tr>
 		{%endfor%}
 		</tbody>

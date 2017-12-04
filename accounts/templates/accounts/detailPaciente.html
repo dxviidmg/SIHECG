@@ -36,7 +36,7 @@
 				{%for ecg in ecgs%}
 					<tr>
 						<td>{{ecg.creacion}}</td>
-						<td><a href="{{ecg.archivo}}">Descargar</a></td>
+						<td><a href="{{ecg.archivo.url}}">Descargar</a></td>
 					</tr>
 				{%endfor%}
 				</tbody>

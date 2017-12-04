@@ -16,10 +16,16 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from accounts import urls as accountsUrls
-#from ecgs import urls as ecgsUrls
+
+#Media and static
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(accountsUrls, namespace="accounts")),
 #    url(r'^', include(ecgsUrls, namespace="ecgsUrls")),    
 ]
+
+if settings.DEBUG:
+	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
