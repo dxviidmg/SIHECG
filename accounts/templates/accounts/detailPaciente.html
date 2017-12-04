@@ -1,0 +1,48 @@
+{%extends 'base.html'%}
+
+{% load bootstrap %}
+
+{%block content%}
+<div class="row">
+	<div class="col-xs-12">
+		<h3>Información del paciente</h3>
+		<p>Nombre: {{paciente.first_name}} {{paciente.last_name}}</p>
+		<p>Edad: {{perfil.age}}</p>
+		<p>Teléfono: {{perfil.phone}}</p>
+	</div>
+
+	{%if request.user.user.doctor is null%}
+	<div class="col-xs-12">
+		<form action="." method="post" enctype="multipart/form-data">
+			<h4>Registro de archivo de ECG</h4>	
+			{%csrf_token%}
+			{{NuevoECGForm | bootstrap}}
+			<a href=""><input type="submit" value="Registrar"></a>
+		</form>
+	</div>
+	{%endif%}
+	<div class="col-xs-12">
+		<br>
+		<h3>Historial</h3>
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Fecha</th>
+						<th>Nombre</th>
+					</tr>
+				</thead>
+				<tbody>
+				{%for ecg in ecgs%}
+					<tr>
+						<td>{{ecg.creacion}}</td>
+						<td><a href="{{ecg.archivo}}">Descargar</a></td>
+					</tr>
+				{%endfor%}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+{%endblock content%}

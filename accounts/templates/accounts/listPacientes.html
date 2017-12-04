@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<a href="{%url 'accounts:CreateViewPaciente'%}">Registrar paciente</a>
+<div class="table-responsive">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Usuario</th>
+				<th>Nombre</th>
+				<th>Teléfono</th>
+				<th colspan="2">Opciones</th>
+			</tr>
+		</thead>
+		<tbody>
+		{%for perfil in perfiles%}
+			<tr>
+				<td>{{perfil.user.username}}</td>
+				<td>{{perfil.user.first_name}} {{perfil.user.last_name}}</td>
+				<td>{{perfil.phone}}</td>
+				<td><a href="{%url 'accounts:DetailViewPaciente' perfil.user.username%}">Ver historial</a></td>
+				<td>Borrar</td>
+			</tr>
+		{%endfor%}
+		</tbody>
+	</table>
+</div>
+
+{%endblock content%}
