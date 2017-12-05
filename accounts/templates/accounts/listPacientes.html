@@ -2,9 +2,17 @@
 
 {%block content%}
 
+<style type="text/css">
+table, th {
+	text-align: center;
+}
+</style>
+
 <a href="{%url 'accounts:CreateViewPaciente'%}">Registrar paciente</a>
+<p>
 <div class="table-responsive">
-	<table class="table">
+
+	<table class="table table-bordered">
 		<thead>
 			<tr>
 				<th>Usuario</th>

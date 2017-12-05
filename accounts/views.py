@@ -19,8 +19,6 @@ class ViewProfile(View):
 
 		try:
 			profile = Profile.objects.get(user=user)
-			print(request.user.user.doctor)
-
 		except:
 			profile = None
 	
@@ -49,7 +47,7 @@ class DetailViewPaciente(View):
 		perfil = Profile.objects.get(user=paciente)
 		NuevoECGForm = ECGCreateForm()
 		ecgs = ECG.objects.filter(paciente=paciente)
-		print(ecgs)
+		
 		context = {
 			'paciente': paciente,
 			'perfil': perfil,
